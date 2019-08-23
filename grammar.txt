@@ -6,7 +6,7 @@ NP[case='datv'] -> N[case='datv'] | NUMR[case='datv'] | NPRO[case='datv'] | NP[c
 NP[case='ablt'] -> N[case='ablt'] | NUMR[case='ablt'] | NPRO[case='ablt'] | NP[case='ablt'] NP[case='ablt'] | ADJ[case='ablt'] NP[case='ablt'] | NP[case='ablt'] PRT[case='ablt'] | NPRO[case='ablt'] | NP[case='ablt'] NP[case='gent'] | NP[case='ablt'] NP[case='ablt'] | NP[case='ablt'] PRT
 NP[case="gen2"] -> ADJ[case='gent'] N[case='gen2'] | NP[case='gen2'] ADJ[case='gent'] | ADJ[case='accs'] N[case='accs'] ADJ[case='gent'] N[case='gen2'] | ADJ[case='gent'] N[case='gen2'] ADJ[case='accs'] N[case='accs']
 NP[case='loct'] -> N[case='loct'] | NP[case='loct'] ADJ[case='loct']
-VP[tran] -> INFN[tran] | VP[intr] VP[tran] | VP[tran] VP[tran] | V[tran] | VP[tran] QUES | VP[tran] ADJ | VP[tran] NP[case='ablt'] | VP[tran] ADJ[case='ablt'] | V[tran] PP | ADVB VP[tran] | VP[tran] ADVB | VP[tran] PRCL | GRND VP[tran] | VP[tran] NP[case='accs'] | VP[tran] NP[case='datv'] | VP[tran] NP[case='gent'] | VP[tran] PP | VP[tran] PRED
+VP[tran] -> INFN[tran] | VP[intr] VP[tran] | VP[tran] VP[tran] | V[tran] | VP[tran] ADJ | VP[tran] QUES | VP[tran] NP[case='ablt'] | VP[tran] ADJ[case='ablt'] | V[tran] PP | ADVB VP[tran] | VP[tran] ADVB | VP[tran] PRCL | GRND VP[tran] | VP[tran] NP[case='accs'] | VP[tran] NP[case='datv'] | VP[tran] NP[case='gent'] | VP[tran] PP | VP[tran] PRED
 VP[intr] -> INFN[intr] | VP[intr] VP[intr] | V[intr] | VP[intr] ADJ | VP[intr] QUES | VP[intr] NP[case='ablt'] | VP[intr] ADJ[case='ablt'] | ADVB VP[intr] | VP[intr] ADVB | VP[intr] PRCL | GRND VP[intr] | VP[intr] PP | VP[intr] PRED
 PP -> PREP NP[case='gent'] | PREP NP[case='accs'] | PREP NP[case='datv'] | PREP NP[case='ablt'] | PREP NP[case='loct'] | PREP ADVB
 N[case='nomn'] -> [NOUN,?numb,?per,?gend,nomn,None,None]
@@ -35,7 +35,7 @@ GRND -> [GRND,?numb,?per,?gend,None,intr,?tense] | [GRND,?numb,?per,?gend,None,t
 ADVB -> [ADVB,?numb,?per,?gend,None,None,None]
 PREP -> [PREP,?numb,?per,?gend,None,None,None]
 PRCL -> [PRCL,?numb,?per,?gend,None,None,None]
-PRED -> [PRED,?numb,?per,?gend,None,None,None]
+PRED -> [PRED,?numb,?per,?gend,None,None,None] | [PRED,None,None,None,None,None,?tense]
 CONJ -> [CONJ,?numb,?per,?gend,None,None,None]
 INTJ -> [INTJ,?numb,?per,?gend,None,None,None]
 QUES -> [QUES,?numb,?per,?gend,None,None,None]
