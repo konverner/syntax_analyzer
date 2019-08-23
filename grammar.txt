@@ -1,7 +1,7 @@
-S -> NP[case='nomn'] VP[tran] | NP[case='nomn'] VP[intr] | NP[case='nomn'] ADJ | NP[case='nomn'] ADJ[case='nomn'] | NP[case='datv'] PRED | NP[case='datv'] NPRO | NP[case='datv'] VP[tran] | NP[case='datv'] VP[intr]
+S -> NP[case='nomn'] VP[tran] | NP[case='nomn'] VP[intr] | NP[case='nomn'] PRED | NP[case='nomn'] ADJ | NP[case='nomn'] ADJ[case='nomn'] | NP[case='datv'] PRED | NP[case='datv'] NPRO | NP[case='datv'] VP[tran] | NP[case='datv'] VP[intr]
 NP[case='nomn'] -> N[case='nomn'] | NUMR[case='nomn'] | NPRO[case='nomn'] | NP[case='nomn'] NP[case='gent'] | ADJ[case='nomn'] NP[case='nomn'] | NP[case='nomn'] PRT[case='nomn'] | NPRO[case='nomn'] | NP[case='nomn'] NP[case='gent'] | NP[case='nomn'] NP[case='nomn'] | NP[case='nomn'] PRT
 NP[case='gent'] -> N[case='gent'] | NUMR[case='gent'] | NPRO[case='gent'] | NP[case='gent'] NP[case='gent'] | ADJ[case='gent'] NP[case='gent'] | NP[case='gent'] PRT[case='gent'] | NPRO[case='gent'] | NP[case='gent'] NP[case='gent'] | NP[case='gent'] NP[case='gent'] | NP[case='gent'] PRT
-NP[case='accs'] -> N[case='accs'] | NUMR[case='accs'] | NPRO[case='accs'] | NP[case='accs'] NP[case='accs'] | ADJ[case='accs'] NP[case='accs'] | NP[case='accs'] PRT[case='accs'] | NPRO[case='accs'] | NP[case='accs'] NP[case='gent'] | NP[case='accs'] NP[case='accs'] | NP[case='accs'] PRT
+NP[case='accs'] -> N[case='accs'] | NUMR[case='accs'] | NPRO[case='accs'] | NP[case='accs'] NP[case='accs'] | ADJ[case='accs'] NP[case='accs'] | NP[case='accs'] PRT[case='accs'] | NPRO[case='accs'] | NP[case='accs'] NP[case='gent'] | NP[case='accs'] NP[case='accs'] | NP[case='accs'] PRT 
 NP[case='datv'] -> N[case='datv'] | NUMR[case='datv'] | NPRO[case='datv'] | NP[case='datv'] NP[case='datv'] | ADJ[case='datv'] NP[case='datv'] | NP[case='datv'] PRT[case='datv'] | NPRO[case='datv'] | NP[case='datv'] NP[case='gent'] | NP[case='datv'] NP[case='datv'] | NP[case='datv'] PRT
 NP[case='ablt'] -> N[case='ablt'] | NUMR[case='ablt'] | NPRO[case='ablt'] | NP[case='ablt'] NP[case='ablt'] | ADJ[case='ablt'] NP[case='ablt'] | NP[case='ablt'] PRT[case='ablt'] | NPRO[case='ablt'] | NP[case='ablt'] NP[case='gent'] | NP[case='ablt'] NP[case='ablt'] | NP[case='ablt'] PRT
 NP[case="gen2"] -> ADJ[case='gent'] N[case='gen2'] | NP[case='gen2'] ADJ[case='gent'] | ADJ[case='accs'] N[case='accs'] ADJ[case='gent'] N[case='gen2'] | ADJ[case='gent'] N[case='gen2'] ADJ[case='accs'] N[case='accs']
@@ -35,7 +35,7 @@ GRND -> [GRND,?numb,?per,?gend,None,intr,?tense] | [GRND,?numb,?per,?gend,None,t
 ADVB -> [ADVB,?numb,?per,?gend,None,None,None]
 PREP -> [PREP,?numb,?per,?gend,None,None,None]
 PRCL -> [PRCL,?numb,?per,?gend,None,None,None]
-PRED -> [PRED,?numb,?per,?gend,None,None,None] | [PRED,None,None,None,None,None,?tense]
+PRED -> [PRED,?numb,?per,?gend,None,None,None] | [PRED,?numb,?per,?gend,None,None,?tense] | PRED PRCL | PRED NP[case='gent'] 
 CONJ -> [CONJ,?numb,?per,?gend,None,None,None]
 INTJ -> [INTJ,?numb,?per,?gend,None,None,None]
 QUES -> [QUES,?numb,?per,?gend,None,None,None]
