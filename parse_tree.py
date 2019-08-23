@@ -122,7 +122,7 @@ class Tree:
 			for j, node2 in enumerate(self.nodes):
 				if (node1 != node2 and i<len(self.nodes) and j<len(self.nodes)):
 					rule = self.find_rule(self.nodes[i], self.nodes[j])
-					if (rule != None and self.grammar[rule][:2] == 'VP'):
+					if (rule != None and (self.grammar[rule][:2] == 'VP' or self.grammar[rule][:4] == 'PRED')):
 						self.unite_nodes(self.nodes[i], self.nodes[j], self.grammar[rule]);
 						self.reduce_VP();
 	
