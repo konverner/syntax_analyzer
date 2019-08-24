@@ -1,4 +1,5 @@
-# syntax_analyzer
+# Syntax Analyzer
+
 
 This is syntax analyzer for Russian based on context-free grammar. 
 It uses OpenCorpora dictionary of labelled words and pymorphy2 as interface. 
@@ -14,7 +15,7 @@ dict - dictionary of some complex phrases (conjucations, predicatives, adverbs e
 
 Example:
 
->> parser = analyzer.Parser()
->> sent = "Я пишу письмо старому другу"
->> t = parser.parse(sent)
->> t[0].display();
+parser = analyzer.Parser()
+sent = "Я пишу письмо старому другу"
+t = parser.parse(sent)
+t[0].display()
