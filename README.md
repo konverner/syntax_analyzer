@@ -30,18 +30,31 @@ dict - dictionary of some complex phrases (conjugations, predicatives, adverbs e
 >> t[0].display()
 
 S
+       
        NP[case='nomn'] 
+           
            Я ['NPRO', 'sing', '1per', 'nomn']
+   
    VP[tran]
+     
      VP[tran]
+               
                VP[tran] 
+                       
                        пишу ['VERB', 'sing', '1per', 'tran', 'pres']
+               
                NP[case='accs'] 
+                       
                        письмо ['NOUN', 'sing', 'neut', 'accs']
+     
      NP[case='datv']
+               
                NP[case='datv'] 
+                       
                        старому ['NOUN', 'sing', 'neut', 'datv']
+               
                NP[case='datv'] 
+                       
                        другу ['NOUN', 'sing', 'datv']
 
 </code>
