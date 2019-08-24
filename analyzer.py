@@ -23,11 +23,16 @@ class Parser:
 		self.dict = d;
 		self.morph = pymorphy2.MorphAnalyzer()
 	
+
+	# use pymorphy2 to define set of grammemes
+
 	def tag(self, word):
 
 		result = list()
 		tags_set = [None]*7;
 		
+		# if word is complex pharse (predicative of conjugation)
+
 		if (word[1:5] == 'pred'):
 			tags = ["PRED",None,None,None,None,None,None]
 			return list([tags]);
@@ -35,6 +40,8 @@ class Parser:
 		if (word[1:5] == 'conj'):
 			tags = ["CONJ",None,None,None,None,None,None]
 			return list([tags]);
+
+		# if word is single
 
 		tags = [list(tag.grammemes) for tag in self.morph.tag(word)]
 
@@ -57,25 +64,24 @@ class Parser:
 				if (grammeme in self.pos and tags_set[0] == None):
 					tags_set[0] = grammeme;
 					
-				# если слово - прилагательное-анафора 
+				# if word is anaphora 
 				if (grammeme is "Anph"):
 					tags_set[0] = "NPRO";
 
-				# если слово - предкатив
+				# if word is predicative
 				if (grammeme is "Prdx"):
 					tags_set[0] = "PRED"
 		
 
 			result.append(tags_set)
 			tags_set = [None]*7
-		for i in range(len(result)):
-			for j in range(len(result)):
-				if (i != j and i < len(result) and j < len(result)):
-					if result[i] == result[j]:
-						result.remove(result[i]);
+
+
 		return result
 
-	def normalize(self, form):
+	# convertation of grammmemes in general form to search in grammar
+
+	def general_form(self, form):
 		result = '[';
 		result += str(form[0]) + ',';
 		result += "?numb" + ',';
@@ -96,12 +102,16 @@ class Parser:
 
 		return result[:-1] + ']'
 	
-	def reduce(self, rhs):
-		rule = self.normalize(rhs)
+
+	# find lefthand part of production   
+
+	def find_lhs(self, rhs):
+		rule = self.general_form(rhs)
 		while (rule in self.grammar.keys()):
 			rule = self.grammar[rule];
 		return rule;
 
+	
 	def create_parse_tree(self, sent):
 		tree = Tree(self.grammar);
 		tree.build(sent);	
@@ -111,18 +121,25 @@ class Parser:
 		else:
 			return tree;
 
+	# function to split the sentence into clauses 
+
 	def split_sentence(self, sent):
 		temp = sent.copy();
 		subtrees = list();
 		for i, word in enumerate(temp):
+			
+			# if conj - try to use it as delimiter of clauses
 			if (temp[i][1] == "CONJ"):
 				if(self.create_parse_tree(temp[:i]) is not False):
 					subtrees.append(self.create_parse_tree(temp[:i]));
 					del temp[:i+1]
+			
+			# if nominative - try to use it as delimiter of clauses
 			if (i<len(temp) and temp[i][1] == "NP[case='nomn']"):
 				if(self.create_parse_tree(temp[:i]) is not False and self.create_parse_tree(temp[i:]) is not False):
 					subtrees.append(self.create_parse_tree(temp[:i]));
 					del temp[:i]
+		
 		if(self.create_parse_tree(temp) == False):
 			return False;
 		else:
@@ -130,6 +147,7 @@ class Parser:
 			tree = Tree(self.grammar);
 			tree.create_root(subtrees);
 			return tree;
+
 
 	def build_trees(self, sent):
 		variants = list();
@@ -143,7 +161,7 @@ class Parser:
 
 
 
-	def _parse(self, sent, code1=False):
+	def _parse(self, sent):
 		result = list();
 		for word in sent:
 			variants = list();
@@ -151,15 +169,15 @@ class Parser:
 				variants.append([word[0], self.reduce(grammemes),grammemes])
 			result.append(variants[:5]);
 
-		if (code1==True):
-			return result;
 		trees = self.build_trees(result);
 
 		return trees;
 
 
-	def parse(self, sent, code1=False):
+	def parse(self, sent):
 		result = list();
+		
+		# delete all punctuation marks
 		sent = sent.replace(',', '');
 		sent = sent.replace('!', '');
 		sent = sent.replace('?', '');
@@ -167,6 +185,7 @@ class Parser:
 		sent = sent.replace('"', '');
 		sent = sent.replace(':', '');
 
+		# find complex pharses (that are consits of two or more words)
 		for i in range(len(self.dict['conj'])):
 			if self.dict['conj'][i] in sent:
 				sent = sent.replace(self.dict['conj'][i], '$[conj]'+self.dict['conj'][i]+'$')
@@ -192,13 +211,16 @@ class Parser:
 			else:
 				new_sent.append(sent[i])
 
+		# find grammemes to each word
 		for word in new_sent:
 			if word[0] == "[":
 				result.append([word[6:],self.tag(word)])
 			else:
 				result.append([word,self.tag(word)])
 		
-		return self._parse(result, code1=code1);
+		return self._parse(result);
+
+
 
 def create_rules(lhs, rhs):
 	rhs = rhs.split(' | ')
