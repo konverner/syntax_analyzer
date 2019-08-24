@@ -14,7 +14,7 @@ There are also complements:
 
 grammar.txt - context-free grammar for russian
 
-dict - dictionary of some complex phrases (conjucations, predicatives, adverbs etc.) that don't present in OpenCorpora dictionary.
+dict - dictionary of some complex phrases (conjugations, predicatives, adverbs etc.) that don't present in OpenCorpora dictionary.
 
 
 # Example:
