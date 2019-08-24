@@ -166,7 +166,7 @@ class Parser:
 		for word in sent:
 			variants = list();
 			for grammemes in word[1]:
-				variants.append([word[0], self.reduce(grammemes),grammemes])
+				variants.append([word[0], self.find_lhs(grammemes),grammemes])
 			result.append(variants[:5]);
 
 		trees = self.build_trees(result);
