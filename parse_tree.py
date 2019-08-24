@@ -110,6 +110,8 @@ class Tree:
 			return rule2;
 		return None;
 
+	# unite nodes in the given order
+
 	def reduce(self):
 		self.reduce_ADJ();
 		self.reduce_NP();
@@ -265,6 +267,7 @@ class Tree:
 			self._display(node.l, space+2)
 			self._display(node.r, space+2)
 
+	# preorder traversal
 	def display(self):
 		for s in self.root.sentences:
 			self._display(s,1);
