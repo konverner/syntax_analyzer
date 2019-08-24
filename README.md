@@ -29,13 +29,12 @@ dict - dictionary of some complex phrases (conjugations, predicatives, adverbs e
 
 >> t[0].display()
 
-S
-       
+    S     
        NP[case='nomn'] 
            
            Я ['NPRO', 'sing', '1per', 'nomn']
-   
-   VP[tran]
+           
+    VP[tran]
      
      VP[tran]
                
