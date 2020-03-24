@@ -57,3 +57,13 @@ dict - dictionary of some complex phrases (conjugations, predicatives, adverbs e
                        другу ['NOUN', 'sing', 'datv']
 
 </code>
+
+# Note
+
+if you have an error like this:
+
+
+
+download grammar.txt from here shorturl.at/GNV57
+
+and replace <i>/Analyzer/grammar.txt</i> with it
