@@ -64,14 +64,22 @@ if you have an error like this:
 
 <code>
     Traceback (most recent call last):
+  
   File "<stdin>", line 1, in <module>
+  
   File "C:\python38\analyzer.py", line 246, in <module>
-    G=grammar(open(sys.prefix + str("\\Analyzer\\grammar.txt")));
+  
+  G=grammar(open(sys.prefix + str("\\Analyzer\\grammar.txt")));
+  
   File "C:\python38\analyzer.py", line 238, in grammar
-    rhs = rule[1]
-IndexError: list index out of range
-    </code>
+  
+  rhs = rule[1]
 
-download grammar.txt from here shorturl.at/GNV57
+IndexError: list index out of range
+
+</code>
+
+
+download grammar.txt from [here](shorturl.at/GNV57)
 
 and replace <i>/Analyzer/grammar.txt</i> with it
