@@ -80,6 +80,6 @@ IndexError: list index out of range
 </code>
 
 
-download grammar.txt from [here](shorturl.at/GNV57)
+download grammar.txt from [here](https://shorturl.at/GNV57/)
 
 and replace <i>/Analyzer/grammar.txt</i> with it
