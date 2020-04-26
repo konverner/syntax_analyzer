@@ -62,7 +62,7 @@ dict - dictionary of some complex phrases (conjugations, predicatives, adverbs e
 
 if you have an error like this:
 
-<code>
+```
     Traceback (most recent call last):
   
   File "<stdin>", line 1, in <module>
@@ -77,7 +77,7 @@ if you have an error like this:
 
 IndexError: list index out of range
 
-</code>
+```
 
 
 download grammar.txt from [here](https://shorturl.at/GNV57)
